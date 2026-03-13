@@ -25,31 +25,31 @@ export default function HeroVideoSection({ onScrollDown }) {
       <div style={{
         position: "relative", zIndex: 2, height: "100%",
         display: "flex", alignItems: "center", justifyContent: "center",
-        padding: mob ? "80px 20px 40px" : "100px 60px 60px",
-        gap: mob ? 28 : 60, maxWidth: 1300, margin: "0 auto",
+        padding: mob ? "70px 20px 20px" : "100px 60px 60px",
+        gap: mob ? 12 : 60, maxWidth: 1300, margin: "0 auto",
         flexDirection: mob ? "column" : "row",
-        flexWrap: "wrap",
+        flexWrap: "nowrap",
       }}>
 
         {/* ── LEFT: Text + CTA ── */}
         <div style={{ flex: "1 1 420px", minWidth: mob ? 0 : 340, width: mob ? "100%" : "auto", textAlign: mob ? "center" : "left" }}>
 
           {/* Badge */}
-          <div style={{ display: "inline-flex", alignItems: "center", gap: 8, padding: mob ? "6px 14px" : "8px 18px", background: "rgba(43,191,191,0.08)", border: "1px solid rgba(43,191,191,0.2)", borderRadius: 50, marginBottom: mob ? 18 : 28, animation: "fadeInUp 0.6s ease" }}>
-            <span style={{ width: 8, height: 8, borderRadius: "50%", background: B.teal, display: "inline-block" }} />
-            <span style={{ color: B.teal, fontSize: mob ? 9 : 12, fontWeight: 700, letterSpacing: mob ? 1 : 2, textTransform: "uppercase" }}>
+          <div style={{ display: "inline-flex", alignItems: "center", gap: 8, padding: mob ? "4px 12px" : "8px 18px", background: "rgba(43,191,191,0.08)", border: "1px solid rgba(43,191,191,0.2)", borderRadius: 50, marginBottom: mob ? 8 : 28, animation: "fadeInUp 0.6s ease" }}>
+            <span style={{ width: 6, height: 6, borderRadius: "50%", background: B.teal, display: "inline-block" }} />
+            <span style={{ color: B.teal, fontSize: mob ? 8 : 12, fontWeight: 700, letterSpacing: mob ? 1 : 2, textTransform: "uppercase" }}>
               {mob ? "INVODENT DENTAL CARE" : "INVODENT DENTAL CARE AND ORTHODONTIC CENTRE"}
             </span>
           </div>
 
           {/* Headline */}
-          <h1 style={{ fontSize: mob ? "clamp(28px,8vw,38px)" : "clamp(36px,5.5vw,64px)", fontWeight: 900, color: "#fff", lineHeight: 1.08, marginBottom: mob ? 14 : 20, letterSpacing: -1.5, animation: "fadeInUp 0.8s ease" }}>
+          <h1 style={{ fontSize: mob ? "clamp(22px,6.5vw,28px)" : "clamp(36px,5.5vw,64px)", fontWeight: 900, color: "#fff", lineHeight: 1.1, marginBottom: mob ? 8 : 20, letterSpacing: -1, animation: "fadeInUp 0.8s ease" }}>
             Best Dental Care in<br />
             <span style={{ background: B.grad, WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>Visakhapatnam</span>
           </h1>
 
           {/* Subtitle */}
-          <p style={{ fontSize: mob ? 14 : "clamp(15px,1.6vw,19px)", color: "rgba(255,255,255,0.6)", lineHeight: 1.7, maxWidth: mob ? "100%" : 460, marginBottom: mob ? 24 : 36, fontWeight: 400, animation: "fadeInUp 1s ease" }}>
+          <p style={{ fontSize: mob ? 12 : "clamp(15px,1.6vw,19px)", color: "rgba(255,255,255,0.6)", lineHeight: 1.6, maxWidth: mob ? "100%" : 460, marginBottom: mob ? 16 : 36, fontWeight: 400, animation: "fadeInUp 1s ease" }}>
             Working on your smile, before we get to your teeth.<br />
             13+ years of transforming lives at Invodent.
           </p>
@@ -59,34 +59,34 @@ export default function HeroVideoSection({ onScrollDown }) {
             <div onClick={() => {
               const el = document.getElementById('contact-section');
               if (el) el.scrollIntoView({ behavior: 'smooth' });
-            }} style={{ cursor: "pointer", display: "inline-flex", alignItems: "center", justifyContent: "center", gap: 10, background: B.grad, borderRadius: 50, padding: mob ? "14px 28px" : "16px 36px", color: "#fff", fontSize: mob ? 14 : 15, fontWeight: 800, letterSpacing: 0.5, boxShadow: `0 8px 35px rgba(43,191,191,0.3)`, transition: "transform 0.3s" }}>
+            }} style={{ cursor: "pointer", display: "inline-flex", alignItems: "center", justifyContent: "center", gap: 10, background: B.grad, borderRadius: 50, padding: mob ? "12px 24px" : "16px 36px", color: "#fff", fontSize: mob ? 13 : 15, fontWeight: 800, letterSpacing: 0.5, boxShadow: `0 8px 35px rgba(43,191,191,0.3)`, transition: "transform 0.3s" }}>
               Book Free Consultation
             </div>
-            <div onClick={onScrollDown} style={{ cursor: "pointer", display: "inline-flex", alignItems: "center", justifyContent: "center", gap: 10, background: "transparent", border: "1.5px solid rgba(255,255,255,0.2)", borderRadius: 50, padding: mob ? "14px 28px" : "16px 36px", color: "#fff", fontSize: mob ? 14 : 15, fontWeight: 700, letterSpacing: 0.5, transition: "all 0.3s" }}>
+            <div onClick={onScrollDown} style={{ cursor: "pointer", display: "inline-flex", alignItems: "center", justifyContent: "center", gap: 10, background: "transparent", border: "1.5px solid rgba(255,255,255,0.2)", borderRadius: 50, padding: mob ? "12px 24px" : "16px 36px", color: "#fff", fontSize: mob ? 13 : 15, fontWeight: 700, letterSpacing: 0.5, transition: "all 0.3s" }}>
               Explore Doors ↓
             </div>
           </div>
 
           {/* Trust badges */}
-          <div style={{ display: "flex", gap: mob ? 12 : 20, marginTop: mob ? 20 : 36, alignItems: "center", animation: "fadeInUp 1.4s ease", justifyContent: mob ? "center" : "flex-start" }}>
-            <div style={{ display: "flex", alignItems: "center", gap: 6 }}>
-              <span style={{ color: B.teal, fontSize: mob ? 14 : 16 }}>★</span>
-              <span style={{ color: "#fff", fontSize: mob ? 13 : 14, fontWeight: 700 }}>4.9</span>
-              <span style={{ color: "rgba(255,255,255,0.4)", fontSize: mob ? 11 : 12 }}>Google Rating</span>
+          <div style={{ display: "flex", gap: mob ? 10 : 20, marginTop: mob ? 12 : 36, alignItems: "center", animation: "fadeInUp 1.4s ease", justifyContent: mob ? "center" : "flex-start" }}>
+            <div style={{ display: "flex", alignItems: "center", gap: 4 }}>
+              <span style={{ color: B.teal, fontSize: mob ? 12 : 16 }}>★</span>
+              <span style={{ color: "#fff", fontSize: mob ? 11 : 14, fontWeight: 700 }}>4.9</span>
+              <span style={{ color: "rgba(255,255,255,0.4)", fontSize: mob ? 10 : 12 }}>Google</span>
             </div>
-            <div style={{ width: 1, height: 20, background: "rgba(255,255,255,0.1)" }} />
-            <div style={{ color: "rgba(255,255,255,0.4)", fontSize: mob ? 11 : 12, fontWeight: 600 }}>
-              🦷 5000+ Happy Smiles
+            <div style={{ width: 1, height: 16, background: "rgba(255,255,255,0.1)" }} />
+            <div style={{ color: "rgba(255,255,255,0.4)", fontSize: mob ? 10 : 12, fontWeight: 600 }}>
+              5000+ Happy Smiles
             </div>
           </div>
         </div>
 
         {/* ── RIGHT: YouTube Video ── */}
-        <div style={{ flex: "1 1 480px", minWidth: mob ? 0 : 340, width: mob ? "100%" : "auto", animation: "fadeInUp 1s ease" }}>
+        <div style={{ flex: mob ? "0 0 auto" : "1 1 480px", maxWidth: mob ? "300px" : "none", width: "100%", animation: "fadeInUp 1s ease" }}>
           <div style={{
             position: "relative", width: "100%", paddingBottom: "56.25%",
-            borderRadius: mob ? 14 : 20, overflow: "hidden",
-            boxShadow: `0 20px 60px rgba(0,0,0,0.5), 0 0 40px ${B.teal}15`,
+            borderRadius: mob ? 12 : 20, overflow: "hidden",
+            boxShadow: `0 15px 40px rgba(0,0,0,0.5), 0 0 30px ${B.teal}10`,
             border: "1px solid rgba(255,255,255,0.08)",
           }}>
             <iframe

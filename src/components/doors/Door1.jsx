@@ -35,7 +35,7 @@ export default function Door1() {
         {/* Stats */}
         <Reveal delay="0.15s">
           <div style={{ display: "grid", gridTemplateColumns: mob ? "repeat(3,1fr)" : "repeat(6,auto)", gap: mob ? 10 : 24, marginBottom: mob ? 40 : 72 }}>
-            {[["5000+", "Patients Treated"], ["Est.", "2012"], ["4.9 ★", "Google Rating"], ["10+", "Treatments"], ["13+", "Years of Care"], ["2", "Expert Doctors"]].map(([n, l]) => (
+            {[["5000+", "Patients Treated"], ["Est.", "2012"], ["4.9 ★", "Google Rating"], ["10+", "Treatments"], ["13+", "Years of Care"], ["1", "Expert Doctor"]].map(([n, l]) => (
               <div key={l} style={{ background: "rgba(43,191,191,0.07)", border: "1px solid rgba(43,191,191,0.15)", borderRadius: mob ? 12 : 16, padding: mob ? "14px 10px" : "20px 24px", textAlign: "center" }}>
                 <div style={{ fontSize: mob ? 20 : 26, fontWeight: 900, background: B.grad, WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>{n}</div>
                 <div style={{ fontSize: mob ? 8 : 10, color: B.steel, letterSpacing: mob ? 1 : 2, textTransform: "uppercase", marginTop: 4 }}>{l}</div>
@@ -172,25 +172,76 @@ export default function Door1() {
         <Reveal delay="0.3s">
           <SectionLabel>Meet the Team</SectionLabel>
           <h2 style={{ color: "#fff", fontSize: mob ? 22 : 28, fontWeight: 800, marginBottom: mob ? 20 : 32, lineHeight: 1.2 }}>The Specialists Behind Your Smile</h2>
-          <div style={{ display: "grid", gridTemplateColumns: mob ? "1fr" : "1fr 1fr", gap: mob ? 16 : 24, marginBottom: mob ? 48 : 80 }}>
+          <div style={{ display: "grid", gridTemplateColumns: "1fr", gap: 24, marginBottom: mob ? 48 : 80 }}>
             {[
-              { emoji: "👩‍⚕️", name: "Dr. Venkata Mounika Madisa", role: "Founder & Chief Orthodontist", qual: "MDS – Orthodontics & Dentofacial Orthopaedics · BDS", specs: ["Orthodontics", "Invisalign", "Clear Aligners", "Dental Aesthetics"], ach: "Award-winning specialist · Dental textbook contributor", bio: "Dr. Mounika brings over 13 years of clinical excellence to every patient. Her specialisation in orthodontics and dentofacial orthopaedics, combined with a relentless pursuit of aesthetic perfection, has made her one of the most sought-after orthodontists in Visakhapatnam." },
-              { emoji: "👨‍⚕️", name: "Dr. Jaya Reddy Mettu", role: "Associate Dentist & Cosmetology Specialist", qual: "BDS · Fellowship in Medical Cosmetology · Mastership in Clinical Dentistry", specs: ["General Dentistry", "Cosmetic Procedures", "Facial Aesthetics"], ach: "Dual specialisation in dental & medical cosmetology", bio: "Dr. Jaya combines the art of dentistry with advanced cosmetology techniques. Her unique dual qualification in dental science and medical cosmetology makes her a rare specialist for patients seeking complete facial aesthetic transformation alongside dental care." },
+              { img: "/dr-mounica.png", name: "Dr. Venkata Mounika Madisa", role: "Founder & Chief Orthodontist", qual: "MDS – Orthodontics & Dentofacial Orthopaedics · BDS", bio: "Dr. Mounika brings over 13 years of clinical excellence to every patient. Her specialisation in orthodontics and dentofacial orthopaedics, combined with a relentless pursuit of aesthetic perfection, has made her one of the most sought-after orthodontists in Visakhapatnam." },
             ].map(d => (
-              <div key={d.name} style={{ background: "rgba(43,191,191,0.05)", border: "1px solid rgba(43,191,191,0.18)", borderRadius: mob ? 18 : 24, padding: mob ? 20 : 28, position: "relative", overflow: "hidden" }}>
+              <div key={d.name} style={{ 
+                background: "linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%)",
+                backdropFilter: "blur(20px)",
+                WebkitBackdropFilter: "blur(20px)",
+                border: "1px solid rgba(255,255,255,0.08)",
+                borderRadius: mob ? 24 : 32, 
+                padding: mob ? 24 : 40, 
+                position: "relative", 
+                overflow: "hidden", 
+                maxWidth: 900,
+                display: "grid",
+                gridTemplateColumns: mob ? "1fr" : "320px 1fr",
+                gap: mob ? 28 : 48,
+                alignItems: "center",
+                boxShadow: "0 40px 100px -20px rgba(0,0,0,0.5)",
+                margin: "0 auto"
+              }}>
                 <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: 3, background: B.grad }} />
-                <div style={{ fontSize: mob ? 40 : 52, marginBottom: 14 }}>{d.emoji}</div>
-                <div style={{ color: "#fff", fontSize: mob ? 16 : 18, fontWeight: 800, marginBottom: 2 }}>{d.name}</div>
-                <div style={{ color: B.teal, fontSize: mob ? 11 : 12, fontWeight: 600, marginBottom: 8 }}>{d.role}</div>
-                <div style={{ color: B.steel, fontSize: mob ? 11 : 12, marginBottom: 14 }}>{d.qual}</div>
-                <div style={{ display: "flex", flexWrap: "wrap", gap: 6, marginBottom: 14 }}>
-                  {d.specs.map(s => <span key={s} style={{ background: "rgba(43,191,191,0.12)", border: "1px solid rgba(43,191,191,0.25)", borderRadius: 50, padding: "4px 12px", color: B.teal, fontSize: mob ? 10 : 11, fontWeight: 600 }}>{s}</span>)}
+                
+                {/* Doctor Portrait - Left Side */}
+                <div style={{ 
+                  width: "100%", 
+                  aspectRatio: "1/1.2",
+                  borderRadius: 24, 
+                  overflow: "hidden", 
+                  border: `2px solid ${B.teal}30`, 
+                  background: "#081221",
+                  boxShadow: `0 20px 40px ${B.teal}15`
+                }}>
+                  <img src={d.img} alt={d.name} style={{ width: "100%", height: "100%", objectFit: "cover" }} />
                 </div>
-                <div style={{ background: "rgba(240,192,64,0.08)", border: "1px solid rgba(240,192,64,0.2)", borderRadius: 12, padding: "10px 14px", marginBottom: 14 }}>
-                  <span style={{ color: B.gold, fontSize: 11 }}>🏆 {d.ach}</span>
+
+                <div style={{ position: "relative", zIndex: 2, textAlign: "left" }}>
+                  <h3 style={{ 
+                    color: "#fff", 
+                    fontSize: mob ? "26px" : "32px", 
+                    fontWeight: 900, 
+                    marginBottom: 4, 
+                    letterSpacing: -0.8 
+                  }}>
+                    {d.name}
+                  </h3>
+                  
+                  <div style={{ 
+                    color: B.teal, 
+                    fontSize: mob ? 12 : 14, 
+                    fontWeight: 800, 
+                    marginBottom: 12, 
+                    letterSpacing: 2, 
+                    textTransform: "uppercase" 
+                  }}>
+                    ✨ {d.role}
+                  </div>
+                  
+                  <div style={{ color: B.steel, fontSize: mob ? 13 : 14, marginBottom: 20, lineHeight: 1.5, fontWeight: 600 }}>
+                    {d.qual}
+                  </div>
+                  
+                  <p style={{ color: B.steel, fontSize: mob ? 14 : 15, lineHeight: 1.7, marginBottom: 32, opacity: 0.9 }}>
+                    {d.bio}
+                  </p>
+                  
+                  <Btn onClick={() => nav("/book-appointment")} style={{ padding: mob ? "14px 28px" : "16px 40px", fontSize: 15 }}>
+                    Book Priority Consultation →
+                  </Btn>
                 </div>
-                <p style={{ color: B.steel, fontSize: mob ? 12 : 13, lineHeight: 1.75 }}>{d.bio}</p>
-                <Btn onClick={() => navigate("/book-appointment")} style={{ marginTop: 18, width: "100%", padding: "12px" }}>Book with {d.name.split(" ")[1]}</Btn>
               </div>
             ))}
           </div>

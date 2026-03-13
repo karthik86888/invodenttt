@@ -14,7 +14,6 @@ export default function Door2() {
   const mob = useIsMobile();
   const nav = useNavigate();
   const [activeR, setActiveR] = useState(0);
-  const [activeBA, setActiveBA] = useState(0);
 
   useEffect(() => {
     const t = setInterval(() => setActiveR(a => (a + 1) % REVIEWS.length), 4000);
@@ -93,27 +92,30 @@ export default function Door2() {
           <SectionLabel color={B.blue}>Transformations</SectionLabel>
           <h2 style={{ color: "#0B1829", fontSize: mob ? 20 : 28, fontWeight: 800, marginBottom: 16 }}>Before & After — The Proof</h2>
           <p style={{ color: B.slate, fontSize: mob ? 13 : 14, marginBottom: mob ? 16 : 28 }}>Real patients. Real results. No digital enhancements.</p>
-          <div style={{ display: "flex", gap: mob ? 6 : 10, marginBottom: mob ? 14 : 20, flexWrap: "wrap" }}>
-            {["All", "Orthodontics", "Invisalign", "Implants", "Cosmetic"].map((f, i) => (
-              <button key={f} onClick={() => setActiveBA(i)} style={{ borderRadius: 50, padding: mob ? "6px 14px" : "7px 18px", border: activeBA === i ? "none" : "1px solid rgba(43,191,191,0.25)", background: activeBA === i ? B.grad : "#fff", color: activeBA === i ? "#fff" : B.slate, fontSize: mob ? 11 : 12, fontWeight: 600, cursor: "pointer", fontFamily: "inherit", transition: "all 0.2s" }}>{f}</button>
-            ))}
-          </div>
           <div style={{ display: "grid", gridTemplateColumns: mob ? "1fr" : "repeat(3,1fr)", gap: mob ? 12 : 16, marginBottom: mob ? 40 : 72 }}>
-            {["Smile Transformation", "Orthodontic Correction", "Implant Placement"].map((c, i) => (
+            {[
+              { title: "Smile Transformation", before: "/ba-smile-before.png", after: "/ba-smile-after.png" },
+              { title: "Orthodontic Correction", before: "/ba-ortho-before.png", after: "/ba-ortho-after.png" },
+              { title: "Implant Placement", before: "/ba-implant-before.png", after: "/ba-implant-after.png" }
+            ].map((c, i) => (
               <div key={i} style={{ background: "#fff", borderRadius: 20, overflow: "hidden", boxShadow: "0 8px 32px rgba(0,0,0,0.08)" }}>
-                <div style={{ height: mob ? 120 : 160, background: `linear-gradient(135deg, rgba(43,191,191,${0.1 + i * 0.05}), rgba(59,130,196,${0.1 + i * 0.05}))`, display: "flex", alignItems: "center", justifyContent: "center", position: "relative" }}>
+                <div style={{ height: mob ? 140 : 180, background: "#000", display: "flex", alignItems: "center", justifyContent: "center", position: "relative" }}>
                   <div style={{ display: "flex", width: "100%", height: "100%", alignItems: "center", justifyContent: "center" }}>
-                    <div style={{ flex: 1, height: "100%", background: "rgba(43,191,191,0.08)", display: "flex", alignItems: "center", justifyContent: "center", fontSize: mob ? 28 : 36 }}>😐</div>
-                    <div style={{ width: 3, height: "100%", background: B.grad, position: "relative" }}>
-                      <div style={{ position: "absolute", top: "50%", left: "50%", transform: "translate(-50%,-50%)", width: 28, height: 28, borderRadius: "50%", background: B.grad, display: "flex", alignItems: "center", justifyContent: "center", color: "#fff", fontSize: 11, fontWeight: 800 }}>⟺</div>
+                    <div style={{ flex: 1, height: "100%", position: "relative" }}>
+                      <img src={c.before} alt="Before" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
                     </div>
-                    <div style={{ flex: 1, height: "100%", background: "rgba(59,130,196,0.08)", display: "flex", alignItems: "center", justifyContent: "center", fontSize: mob ? 28 : 36 }}>😄</div>
+                    <div style={{ width: 2, height: "100%", background: B.grad, position: "relative", zIndex: 10 }}>
+                      <div style={{ position: "absolute", top: "50%", left: "50%", transform: "translate(-50%,-50%)", width: 24, height: 24, borderRadius: "50%", background: B.grad, display: "flex", alignItems: "center", justifyContent: "center", color: "#fff", fontSize: 10, fontWeight: 800 }}>⟺</div>
+                    </div>
+                    <div style={{ flex: 1, height: "100%", position: "relative" }}>
+                      <img src={c.after} alt="After" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+                    </div>
                   </div>
-                  <div style={{ position: "absolute", top: 8, left: 8, background: "rgba(0,0,0,0.5)", color: "#fff", fontSize: 9, borderRadius: 50, padding: "3px 10px" }}>BEFORE</div>
-                  <div style={{ position: "absolute", top: 8, right: 8, background: B.teal, color: "#fff", fontSize: 9, borderRadius: 50, padding: "3px 10px" }}>AFTER</div>
+                  <div style={{ position: "absolute", top: 8, left: 8, background: "rgba(0,0,0,0.6)", color: "#fff", fontSize: 8, fontWeight: 700, borderRadius: 50, padding: "3px 10px", letterSpacing: 1 }}>BEFORE</div>
+                  <div style={{ position: "absolute", top: 8, right: 8, background: B.teal, color: "#fff", fontSize: 8, fontWeight: 700, borderRadius: 50, padding: "3px 10px", letterSpacing: 1 }}>AFTER</div>
                 </div>
                 <div style={{ padding: mob ? "12px 14px" : "16px 18px" }}>
-                  <div style={{ color: "#0B1829", fontSize: 13, fontWeight: 700, marginBottom: 4 }}>{c}</div>
+                  <div style={{ color: "#0B1829", fontSize: 13, fontWeight: 700, marginBottom: 4 }}>{c.title}</div>
                   <div style={{ color: B.slate, fontSize: 12 }}>Treatment at Invodent, Visakhapatnam</div>
                 </div>
               </div>
