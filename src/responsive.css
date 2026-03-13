@@ -1,0 +1,26 @@
+/* ════════════════════════════════════════════════════
+   RESPONSIVE OVERRIDES (media-query rules that
+   inline styles cannot handle)
+   ════════════════════════════════════════════════════ */
+
+/* Hide horizontal scrollbar on mobile snap container */
+@media (max-width: 768px) {
+  .doors-snap-container {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .doors-snap-container::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Prevent horizontal overflow on body */
+  html, body {
+    overflow-x: hidden;
+    width: 100%;
+  }
+
+  /* Touch-friendly tap targets */
+  button, a, [role="button"] {
+    min-height: 44px;
+  }
+}
