@@ -81,28 +81,28 @@ export default function HeroVideoSection({ onScrollDown }) {
         </div>
 
         {/* ── RIGHT: YouTube Video ── */}
-        <div style={{ flex: mob ? "0 0 auto" : "1 1 480px", maxWidth: mob ? "100%" : "none", width: "100%", animation: "fadeInUp 1.6s ease" }}>
-          <div style={{
-            position: "relative", width: "100%", paddingBottom: "56.25%",
-            borderRadius: mob ? 16 : 20, overflow: "hidden",
-            boxShadow: `0 15px 40px rgba(0,0,0,0.5), 0 0 30px ${B.teal}10`,
-            border: "1px solid rgba(255,255,255,0.08)",
-          }}>
-            <iframe
-              src="https://www.youtube.com/embed/llRwDBSC3Jc?autoplay=1&mute=1&loop=1&playlist=llRwDBSC3Jc&controls=1&rel=0&modestbranding=1"
-              title="Invodent Clinic Tour"
-              allow="autoplay; encrypted-media"
-              allowFullScreen
-              style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "100%", border: "none" }}
-            />
-          </div>
-          {/* Video caption */}
-          {!mob && (
+        {!mob && (
+          <div style={{ flex: "1 1 480px", maxWidth: "none", width: "100%", animation: "fadeInUp 1.6s ease" }}>
+            <div style={{
+              position: "relative", width: "100%", paddingBottom: "56.25%",
+              borderRadius: 20, overflow: "hidden",
+              boxShadow: `0 15px 40px rgba(0,0,0,0.5), 0 0 30px ${B.teal}10`,
+              border: "1px solid rgba(255,255,255,0.08)",
+            }}>
+              <iframe
+                src="https://www.youtube.com/embed/llRwDBSC3Jc?autoplay=1&mute=1&loop=1&playlist=llRwDBSC3Jc&controls=1&rel=0&modestbranding=1"
+                title="Invodent Clinic Tour"
+                allow="autoplay; encrypted-media"
+                allowFullScreen
+                style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "100%", border: "none" }}
+              />
+            </div>
+            {/* Video caption */}
             <div style={{ marginTop: 14, textAlign: "center", color: "rgba(255,255,255,0.35)", fontSize: 12, fontWeight: 600, letterSpacing: 1 }}>
               🎬 Take a virtual tour of Invodent
             </div>
-          )}
-        </div>
+          </div>
+        )}
       </div>
 
       {/* Scroll indicator */}
