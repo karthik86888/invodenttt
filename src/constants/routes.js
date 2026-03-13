@@ -40,6 +40,12 @@ export const ROUTES = [
     title: "Book Appointment — Invodent Dental Clinic, Visakhapatnam",
     description: "Book your appointment at Invodent. Mon–Sat 9:30 AM–8 PM. +91 83092 65054. Baker's Super Mart, Balaji Nagar, Asilmetta, Visakhapatnam, Andhra Pradesh 530003.",
   },
+  {
+    id: 6,
+    path: "/blog",
+    title: "The Modern Dental Blog — Invodent Dental, Visakhapatnam",
+    description: "Explore the intersection of advanced technology and cinematic dental care. Tips, insights, and stories from Invodent, Visakhapatnam.",
+  },
 ];
 
 /** Helper: get route path by door id (1-5) or home (0) */
@@ -49,5 +55,22 @@ export function getPath(id) {
 
 /** Helper: get route meta by path */
 export function getRouteMeta(pathname) {
-  return ROUTES.find((r) => r.path === pathname) || ROUTES[0];
+  // Check for exact match first
+  const match = ROUTES.find((r) => r.path === pathname);
+  if (match) return match;
+
+  // Check for dynamic blog post match
+  const blogMatch = pathname.match(/^\/blog\/([^/]+)/);
+  if (blogMatch) {
+    const slug = blogMatch[1];
+    // This is a bit tricky since we don't have the data here, 
+    // but we can return a generic "Blog Post" title or import data 
+    // For now, let's just return a better fallback title
+    return {
+      title: "Blog Post — Invodent Dental, Visakhapatnam",
+      description: "Read the latest dental health insights on the Invodent blog.",
+    };
+  }
+
+  return ROUTES[0];
 }

@@ -17,6 +17,8 @@ import Door2 from "./components/doors/Door2";
 import Door3 from "./components/doors/Door3";
 import Door4 from "./components/doors/Door4";
 import Door5 from "./components/doors/Door5";
+import BlogHome from "./components/blog/BlogHome";
+import BlogPost from "./components/blog/BlogPost";
 
 /* ═══════════════════════════════════════════════════════════════
    LANDING — Combines the 3 scroll-snap sections
@@ -109,6 +111,8 @@ export default function App() {
         <Route path="/dental-symptoms" element={<Door3 />} />
         <Route path="/dental-health-quiz" element={<Door4 />} />
         <Route path="/book-appointment" element={<Door5 />} />
+        <Route path="/blog" element={<BlogHome />} />
+        <Route path="/blog/:slug" element={<BlogPost />} />
       </Routes>
     </div>
   );

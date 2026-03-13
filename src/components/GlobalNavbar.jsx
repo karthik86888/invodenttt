@@ -7,15 +7,15 @@ export default function GlobalNavbar() {
   return (
     <div style={{
       position: "fixed", top: 0, left: 0, right: 0, zIndex: 50,
-      padding: mob ? "12px 16px" : "20px 48px",
+      padding: mob ? "8px 16px" : "10px 48px",
       display: "grid", gridTemplateColumns: "1fr auto 1fr", alignItems: "center",
       background: "linear-gradient(180deg,rgba(6,14,26,0.95) 0%,rgba(6,14,26,0) 100%)",
       backdropFilter: "blur(8px)", fontFamily: "'Outfit',sans-serif",
     }}>
       <div style={{ display: "flex", alignItems: "center", justifyContent: "flex-start" }}>
         <img src="/logo.png" alt="Invodent" style={{
-          height: mob ? 56 : 120, width: "auto", objectFit: "contain",
-          margin: mob ? "-8px 0" : "-30px 0",
+          height: mob ? 48 : 80, width: "auto", objectFit: "contain",
+          margin: mob ? "-6px 0" : "-15px 0",
         }} />
       </div>
       

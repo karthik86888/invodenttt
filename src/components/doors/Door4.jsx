@@ -131,16 +131,29 @@ export default function Door4() {
               { tag: "Cosmetic", title: "Invisalign vs Braces in 2025 — Which Should You Choose?", date: "Mar 2025", min: 6 },
               { tag: "Prevention", title: "How Often Should You Really Visit Your Dentist?", date: "Jan 2025", min: 4 },
             ].map((b, i) => (
-              <div key={i} style={{ background: "rgba(255,255,255,0.03)", border: "1px solid rgba(255,255,255,0.07)", borderRadius: mob ? 14 : 18, overflow: "hidden", cursor: "pointer" }}>
-                <div style={{ height: mob ? 70 : 100, background: `linear-gradient(135deg,rgba(43,191,191,${0.08 + i * 0.04}),rgba(59,130,196,${0.08 + i * 0.04}))`, display: "flex", alignItems: "center", justifyContent: "center", fontSize: mob ? 28 : 36 }}>
-                  {["🦷", "💎", "🩺"][i]}
+                <div key={i} 
+                  onClick={() => {
+                    const slugs = ["root-canal-signs", "invisalign-vs-braces", "dental-visit-frequency"];
+                    nav(`/blog/${slugs[i]}`);
+                  }}
+                  style={{ background: "rgba(255,255,255,0.03)", border: "1px solid rgba(255,255,255,0.07)", borderRadius: mob ? 14 : 18, overflow: "hidden", cursor: "pointer", transition: "all 0.3s" }}
+                  onMouseEnter={(e) => e.currentTarget.style.borderColor = "rgba(43,191,191,0.4)"}
+                  onMouseLeave={(e) => e.currentTarget.style.borderColor = "rgba(255,255,255,0.07)"}
+                >
+                  <div style={{ height: mob ? 80 : 120, overflow: "hidden", position: "relative" }}>
+                    <img 
+                      src={["/blog-tech.png", "/blog-invisalign.png", "/blog-hygiene.png"][i]} 
+                      alt={b.title} 
+                      style={{ width: "100%", height: "100%", objectFit: "cover", opacity: 0.8 }} 
+                    />
+                    <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to bottom, transparent, rgba(6,14,26,0.6))" }} />
+                  </div>
+                  <div style={{ padding: mob ? "12px 14px" : "16px 18px" }}>
+                    <span style={{ background: B.grad, borderRadius: 50, padding: "3px 12px", color: "#fff", fontSize: 10, fontWeight: 700 }}>{b.tag}</span>
+                    <div style={{ color: "#E5E7EB", fontSize: mob ? 12 : 13, fontWeight: 700, margin: "10px 0 6px", lineHeight: 1.45 }}>{b.title}</div>
+                    <div style={{ color: "#6B7280", fontSize: 11 }}>{b.date} · {b.min} min read</div>
+                  </div>
                 </div>
-                <div style={{ padding: mob ? "12px 14px" : "16px 18px" }}>
-                  <span style={{ background: B.grad, borderRadius: 50, padding: "3px 12px", color: "#fff", fontSize: 10, fontWeight: 700 }}>{b.tag}</span>
-                  <div style={{ color: "#E5E7EB", fontSize: mob ? 12 : 13, fontWeight: 700, margin: "10px 0 6px", lineHeight: 1.45 }}>{b.title}</div>
-                  <div style={{ color: "#6B7280", fontSize: 11 }}>{b.date} · {b.min} min read</div>
-                </div>
-              </div>
             ))}
           </div>
         </Reveal>
