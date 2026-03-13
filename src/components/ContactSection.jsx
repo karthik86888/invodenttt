@@ -113,7 +113,15 @@ export default function ContactSection() {
                 <option value="" style={{ background: "#0B1829" }}>Select Treatment</option>
                 {treatments.map(t => <option key={t} value={t} style={{ background: "#0B1829" }}>{t}</option>)}
               </select>
-              <input style={inputStyle} type="date" value={form.date} onChange={e => setForm({ ...form, date: e.target.value })} />
+              <input 
+                style={inputStyle} 
+                type={form.date ? "date" : "text"} 
+                onFocus={(e) => (e.target.type = "date")}
+                onBlur={(e) => { if (!form.date) e.target.type = "text"; }}
+                placeholder="Preferred Date" 
+                value={form.date} 
+                onChange={e => setForm({ ...form, date: e.target.value })} 
+              />
               <textarea style={{ ...inputStyle, minHeight: mob ? 60 : 80, resize: "vertical" }} placeholder="Any message for us..." value={form.message} onChange={e => setForm({ ...form, message: e.target.value })} />
               <button onClick={handleSubmit} disabled={isSubmitting} style={{ width: "100%", padding: mob ? "14px" : "16px", background: B.grad, border: "none", borderRadius: 12, color: "#fff", fontSize: mob ? 14 : 16, fontWeight: 800, fontFamily: "'Outfit',sans-serif", cursor: isSubmitting ? "not-allowed" : "pointer", opacity: isSubmitting ? 0.7 : 1, letterSpacing: 0.5, boxShadow: `0 8px 30px rgba(43,191,191,0.3)`, transition: "all 0.3s" }}>
                 {isSubmitting ? "Sending..." : "Send to Invodent →"}
