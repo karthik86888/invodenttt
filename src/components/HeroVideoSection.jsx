@@ -10,7 +10,7 @@ export default function HeroVideoSection({ onScrollDown }) {
   const mob = useIsMobile();
 
   return (
-    <div style={{ width: "100%", height: "100vh", position: "relative", overflow: "hidden", flexShrink: 0, scrollSnapAlign: "start", background: "linear-gradient(135deg, #060E1A 0%, #0B1829 50%, #060E1A 100%)", fontFamily: "'Outfit',sans-serif" }}>
+    <div style={{ width: "100%", height: mob ? "auto" : "100vh", minHeight: mob ? "100vh" : "0", position: "relative", overflow: "hidden", flexShrink: 0, scrollSnapAlign: "start", background: "linear-gradient(135deg, #060E1A 0%, #0B1829 50%, #060E1A 100%)", fontFamily: "'Outfit',sans-serif" }}>
 
       {/* Subtle background constellation */}
       <Constellation opacity={0.08} count={mob ? 20 : 40} />
@@ -23,16 +23,16 @@ export default function HeroVideoSection({ onScrollDown }) {
 
       {/* Main split content */}
       <div style={{
-        position: "relative", zIndex: 2, height: "100%",
-        display: "flex", alignItems: "center", justifyContent: "center",
-        padding: mob ? "70px 20px 20px" : "100px 60px 60px",
-        gap: mob ? 12 : 60, maxWidth: 1300, margin: "0 auto",
+        position: "relative", zIndex: 2, height: mob ? "auto" : "100%", minHeight: mob ? "100vh" : "0",
+        display: "flex", alignItems: mob ? "flex-start" : "center", justifyContent: "center",
+        padding: mob ? "40px 20px 40px" : "100px 60px 60px",
+        gap: mob ? 10 : 60, maxWidth: 1300, margin: "0 auto",
         flexDirection: mob ? "column" : "row",
         flexWrap: "nowrap",
       }}>
 
         {/* ── LEFT: Text + CTA ── */}
-        <div style={{ flex: "1 1 420px", minWidth: mob ? 0 : 340, width: mob ? "100%" : "auto", textAlign: mob ? "center" : "left" }}>
+        <div style={{ flex: "1 1 420px", minWidth: mob ? 0 : 340, width: mob ? "100%" : "auto", textAlign: "left" }}>
 
           {/* Badge */}
           <div style={{ display: "inline-flex", alignItems: "center", gap: 8, padding: mob ? "4px 12px" : "8px 18px", background: "rgba(43,191,191,0.08)", border: "1px solid rgba(43,191,191,0.2)", borderRadius: 50, marginBottom: mob ? 8 : 28, animation: "fadeInUp 0.6s ease" }}>
@@ -55,20 +55,20 @@ export default function HeroVideoSection({ onScrollDown }) {
           </p>
 
           {/* CTA Buttons */}
-          <div style={{ display: "flex", gap: mob ? 10 : 14, flexWrap: "wrap", animation: "fadeInUp 1.2s ease", justifyContent: mob ? "center" : "flex-start", flexDirection: mob ? "column" : "row" }}>
+          <div style={{ display: "flex", gap: mob ? 10 : 14, flexWrap: "wrap", animation: "fadeInUp 1.2s ease", justifyContent: "flex-start", flexDirection: mob ? "row" : "row" }}>
             <div onClick={() => {
               const el = document.getElementById('contact-section');
               if (el) el.scrollIntoView({ behavior: 'smooth' });
-            }} style={{ cursor: "pointer", display: "inline-flex", alignItems: "center", justifyContent: "center", gap: 10, background: B.grad, borderRadius: 50, padding: mob ? "12px 24px" : "16px 36px", color: "#fff", fontSize: mob ? 13 : 15, fontWeight: 800, letterSpacing: 0.5, boxShadow: `0 8px 35px rgba(43,191,191,0.3)`, transition: "transform 0.3s" }}>
+            }} style={{ cursor: "pointer", display: "inline-flex", alignItems: "center", justifyContent: "center", gap: 10, background: B.grad, borderRadius: 50, padding: mob ? "10px 20px" : "16px 36px", color: "#fff", fontSize: mob ? 12 : 15, fontWeight: 800, letterSpacing: 0.5, boxShadow: `0 8px 35px rgba(43,191,191,0.3)`, transition: "transform 0.3s" }}>
               Book Free Consultation
             </div>
-            <div onClick={onScrollDown} style={{ cursor: "pointer", display: "inline-flex", alignItems: "center", justifyContent: "center", gap: 10, background: "transparent", border: "1.5px solid rgba(255,255,255,0.2)", borderRadius: 50, padding: mob ? "12px 24px" : "16px 36px", color: "#fff", fontSize: mob ? 13 : 15, fontWeight: 700, letterSpacing: 0.5, transition: "all 0.3s" }}>
+            <div onClick={onScrollDown} style={{ cursor: "pointer", display: "inline-flex", alignItems: "center", justifyContent: "center", gap: 10, background: "transparent", border: "1.5px solid rgba(255,255,255,0.2)", borderRadius: 50, padding: mob ? "10px 20px" : "16px 36px", color: "#fff", fontSize: mob ? 12 : 15, fontWeight: 700, letterSpacing: 0.5, transition: "all 0.3s" }}>
               Explore Doors ↓
             </div>
           </div>
 
           {/* Trust badges */}
-          <div style={{ display: "flex", gap: mob ? 10 : 20, marginTop: mob ? 12 : 36, alignItems: "center", animation: "fadeInUp 1.4s ease", justifyContent: mob ? "center" : "flex-start" }}>
+          <div style={{ display: "flex", gap: mob ? 10 : 20, marginTop: mob ? 12 : 36, alignItems: "center", animation: "fadeInUp 1.4s ease", justifyContent: "flex-start" }}>
             <div style={{ display: "flex", alignItems: "center", gap: 4 }}>
               <span style={{ color: B.teal, fontSize: mob ? 12 : 16 }}>★</span>
               <span style={{ color: "#fff", fontSize: mob ? 11 : 14, fontWeight: 700 }}>4.9</span>
@@ -82,11 +82,11 @@ export default function HeroVideoSection({ onScrollDown }) {
         </div>
 
         {/* ── RIGHT: YouTube Video ── */}
-        <div style={{ flex: mob ? "0 0 auto" : "1 1 480px", maxWidth: mob ? "300px" : "none", width: "100%", animation: "fadeInUp 1s ease" }}>
+        <div style={{ flex: mob ? "0 0 auto" : "1 1 480px", maxWidth: mob ? "100%" : "none", width: "100%", animation: "fadeInUp 1s ease" }}>
           <div style={{
-            position: "relative", width: "100%", paddingBottom: "56.25%",
+            position: "relative", width: "100%", paddingBottom: mob ? "56%" : "56.25%",
             borderRadius: mob ? 12 : 20, overflow: "hidden",
-            boxShadow: `0 15px 40px rgba(0,0,0,0.5), 0 0 30px ${B.teal}10`,
+            boxShadow: mob ? `0 10px 30px rgba(0,0,0,0.5)` : `0 15px 40px rgba(0,0,0,0.5), 0 0 30px ${B.teal}10`,
             border: "1px solid rgba(255,255,255,0.08)",
           }}>
             <iframe
