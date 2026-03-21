@@ -28,6 +28,30 @@ export default function ContactSection() {
     if (!form.name || !form.phone) return;
     setIsSubmitting(true);
 
+    let selfieUrl = "";
+    // If patient attached a selfie, upload to ImgBB first
+    if (selfie) {
+      const imgData = new FormData();
+      imgData.append("image", selfie);
+
+      try {
+        // REPLACE 'YOUR_IMGBB_API_KEY' with your free key from https://api.imgbb.com/
+        const imgbbKey = "58ab01ab4f7629908bdc1b7f285f7958";
+        const imgRes = await fetch(`https://api.imgbb.com/1/upload?key=${imgbbKey}`, {
+          method: "POST",
+          body: imgData
+        });
+        const imgJson = await imgRes.json();
+        if (imgJson.success) {
+          selfieUrl = imgJson.data.url;
+        } else {
+          console.error("ImgBB error:", imgJson);
+        }
+      } catch (err) {
+        console.error("Image upload failed", err);
+      }
+    }
+
     // Create form data payload for Web3Forms
     const formData = new FormData();
     formData.append("access_key", "48aa6597-c249-41be-b6c2-6be0ca4b6337");
@@ -39,9 +63,9 @@ export default function ContactSection() {
     if (form.date) formData.append("preferred_date", form.date);
     if (form.message) formData.append("message", form.message);
 
-    // If patient attached a selfie, send it as an attachment
-    if (selfie) {
-      formData.append("attachment", selfie);
+    // Add the direct image URL to the email body if uploaded successfully
+    if (selfieUrl) {
+      formData.append("Patient Selfie URL", selfieUrl);
     }
 
     try {
@@ -113,14 +137,14 @@ export default function ContactSection() {
                 <option value="" style={{ background: "#0B1829" }}>Select Treatment</option>
                 {treatments.map(t => <option key={t} value={t} style={{ background: "#0B1829" }}>{t}</option>)}
               </select>
-              <input 
-                style={inputStyle} 
-                type={form.date ? "date" : "text"} 
+              <input
+                style={inputStyle}
+                type={form.date ? "date" : "text"}
                 onFocus={(e) => (e.target.type = "date")}
                 onBlur={(e) => { if (!form.date) e.target.type = "text"; }}
-                placeholder="Preferred Date" 
-                value={form.date} 
-                onChange={e => setForm({ ...form, date: e.target.value })} 
+                placeholder="Preferred Date"
+                value={form.date}
+                onChange={e => setForm({ ...form, date: e.target.value })}
               />
               <textarea style={{ ...inputStyle, minHeight: mob ? 60 : 80, resize: "vertical" }} placeholder="Any message for us..." value={form.message} onChange={e => setForm({ ...form, message: e.target.value })} />
               <button onClick={handleSubmit} disabled={isSubmitting} style={{ width: "100%", padding: mob ? "14px" : "16px", background: B.grad, border: "none", borderRadius: 12, color: "#fff", fontSize: mob ? 14 : 16, fontWeight: 800, fontFamily: "'Outfit',sans-serif", cursor: isSubmitting ? "not-allowed" : "pointer", opacity: isSubmitting ? 0.7 : 1, letterSpacing: 0.5, boxShadow: `0 8px 30px rgba(43,191,191,0.3)`, transition: "all 0.3s" }}>
