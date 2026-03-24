@@ -25,7 +25,7 @@ export default function HeroVideoSection({ onScrollDown }) {
         position: "relative", zIndex: 2, height: mob ? "auto" : "100%", minHeight: mob ? "100vh" : "0",
         display: "flex", alignItems: mob ? "center" : "center", justifyContent: "center",
         padding: mob ? "120px 20px 60px" : "100px 60px 60px",
-        gap: mob ? 32 : 60, maxWidth: 1300, margin: "0 auto",
+        gap: mob ? 32 : 80, maxWidth: 1500, margin: "0 auto",
         flexDirection: mob ? "column" : "row",
         flexWrap: "nowrap",
       }}>
@@ -82,7 +82,7 @@ export default function HeroVideoSection({ onScrollDown }) {
 
         {/* ── RIGHT: YouTube Video ── */}
         {!mob && (
-          <div style={{ flex: "1 1 480px", maxWidth: "none", width: "100%", animation: "fadeInUp 1.6s ease" }}>
+          <div style={{ flex: "1.2 1 640px", maxWidth: "none", width: "100%", animation: "fadeInUp 1.6s ease" }}>
             <div style={{
               position: "relative", width: "100%", paddingBottom: "56.25%",
               borderRadius: 20, overflow: "hidden",
